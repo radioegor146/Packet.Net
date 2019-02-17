@@ -1,6 +1,5 @@
 using System;
 #if DEBUG
-using log4net.Core;
 #endif
 
 namespace PacketDotNet
@@ -9,7 +8,7 @@ namespace PacketDotNet
     // in place of a log4net logger
     internal class ILogInactive
     {
-#if false
+#if DEBUG
         public bool IsDebugEnabled
         {
             get { return false; }
