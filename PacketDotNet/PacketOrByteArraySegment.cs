@@ -28,9 +28,12 @@ namespace PacketDotNet
     /// Encapsulates and ensures that we have either a Packet OR
     /// a ByteArraySegment but not both
     /// </summary>
+    [Serializable]
     public class PacketOrByteArraySegment
     {
-        private ByteArraySegment theByteArraySegment;
+        private ByteArraySegment _byteArraySegment;
+
+        private Packet _packet;
 
         /// <summary>
         /// Gets or sets the byte array segment.
@@ -38,21 +41,16 @@ namespace PacketDotNet
         /// <value>
         /// The byte array segment.
         /// </value>
-        public ByteArraySegment TheByteArraySegment
+        public ByteArraySegment ByteArraySegment
         {
-            get
-            {
-                return theByteArraySegment;
-            }
+            get => _byteArraySegment;
 
             set
             {
-                thePacket = null;
-                theByteArraySegment = value;
+                _packet = null;
+                _byteArraySegment = value;
             }
         }
-
-        private Packet thePacket;
 
         /// <summary>
         /// Gets or sets the packet.
@@ -60,38 +58,14 @@ namespace PacketDotNet
         /// <value>
         /// The packet.
         /// </value>
-        public Packet ThePacket
+        public Packet Packet
         {
-            get
-            {
-                return thePacket;
-            }
+            get => _packet;
 
             set
             {
-                theByteArraySegment = null;
-                thePacket = value;
-            }
-        }
-
-        /// <summary>
-        /// Appends to the MemoryStream either the byte[] represented by TheByteArray, or
-        /// if ThePacket is non-null, the Packet.Bytes will be appended to the memory stream
-        /// which will append ThePacket's header and any encapsulated packets it contains
-        /// </summary>
-        /// <param name="ms">
-        /// A <see cref="MemoryStream"/>
-        /// </param>
-        public void AppendToMemoryStream(MemoryStream ms)
-        {
-            if(ThePacket != null)
-            {
-                var theBytes = ThePacket.Bytes;
-                ms.Write(theBytes, 0, theBytes.Length);
-            } else if(TheByteArraySegment != null)
-            {
-                var theBytes = TheByteArraySegment.ActualBytes();
-                ms.Write(theBytes, 0, theBytes.Length);
+                _byteArraySegment = null;
+                _packet = value;
             }
         }
 
@@ -102,16 +76,33 @@ namespace PacketDotNet
         {
             get
             {
-                if(ThePacket != null)
-                {
+                if (Packet != null)
                     return PayloadType.Packet;
-                } else if(TheByteArraySegment != null)
-                {
-                    return PayloadType.Bytes;
-                } else
-                {
-                    return PayloadType.None;
-                }
+
+
+                return ByteArraySegment != null ? PayloadType.Bytes : PayloadType.None;
+            }
+        }
+
+        /// <summary>
+        /// Appends to the MemoryStream either the byte[] represented by TheByteArray, or
+        /// if ThePacket is non-null, the Packet.Bytes will be appended to the memory stream
+        /// which will append ThePacket's header and any encapsulated packets it contains
+        /// </summary>
+        /// <param name="ms">
+        /// A <see cref="MemoryStream" />
+        /// </param>
+        public void AppendToMemoryStream(MemoryStream ms)
+        {
+            if (Packet != null)
+            {
+                var bytes = Packet.Bytes;
+                ms.Write(bytes, 0, bytes.Length);
+            }
+            else if (ByteArraySegment != null)
+            {
+                var bytes = ByteArraySegment.ActualBytes();
+                ms.Write(bytes, 0, bytes.Length);
             }
         }
     }

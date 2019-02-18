@@ -1,14 +1,18 @@
+// ReSharper disable once RedundantUsingDirective
 using System;
+
 #if DEBUG
+
 #endif
 
 namespace PacketDotNet
 {
-    // For Release builds we disable logging by using this class
-    // in place of a log4net logger
+#if !DEBUG
+// For Release builds we disable logging by using this class
+// in place of a log4net logger
     internal class ILogInactive
     {
-#if DEBUG
+#if false
         public bool IsDebugEnabled
         {
             get { return false; }
@@ -35,212 +39,212 @@ namespace PacketDotNet
         }
 #endif
 
-		[System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void Debug (object message)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void Debug (Object message)
         {
             throw new System.NotImplementedException();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void Debug (object message, System.Exception exception)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void Debug (Object message, System.Exception exception)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void DebugFormat(string format, params object[] args)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void DebugFormat(String format, params Object[] args)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void DebugFormat (System.IFormatProvider provider, string format, params object[] args)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void DebugFormat (System.IFormatProvider provider, String format, params Object[] args)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void DebugFormat (string format, object arg0)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void DebugFormat (String format, Object arg0)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void DebugFormat (string format, object arg0, object arg1)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void DebugFormat (String format, Object arg0, Object arg1)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void DebugFormat (string format, object arg0, object arg1, object arg2)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void DebugFormat (String format, Object arg0, Object arg1, Object arg2)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void Error (object message)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void Error (Object message)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void Error (object message, System.Exception exception)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void Error (Object message, System.Exception exception)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void ErrorFormat(string format, params object[] args)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void ErrorFormat(String format, params Object[] args)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void ErrorFormat (System.IFormatProvider provider, string format, params object[] args)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void ErrorFormat (System.IFormatProvider provider, String format, params Object[] args)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void ErrorFormat (string format, object arg0)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void ErrorFormat (String format, Object arg0)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void ErrorFormat (string format, object arg0, object arg1)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void ErrorFormat (String format, Object arg0, Object arg1)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void ErrorFormat (string format, object arg0, object arg1, object arg2)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void ErrorFormat (String format, Object arg0, Object arg1, Object arg2)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void Fatal (object message)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void Fatal (Object message)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void Fatal (object message, System.Exception exception)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void Fatal (Object message, System.Exception exception)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void FatalFormat(string format, params object[] args)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void FatalFormat(String format, params Object[] args)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void FatalFormat (System.IFormatProvider provider, string format, params object[] args)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void FatalFormat (System.IFormatProvider provider, String format, params Object[] args)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void FatalFormat (string format, object arg0)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void FatalFormat (String format, Object arg0)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void FatalFormat (string format, object arg0, object arg1)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void FatalFormat (String format, Object arg0, Object arg1)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void FatalFormat (string format, object arg0, object arg1, object arg2)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void FatalFormat (String format, Object arg0, Object arg1, Object arg2)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void Info (object message)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void Info (Object message)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void Info (object message, System.Exception exception)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void Info (Object message, System.Exception exception)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void InfoFormat(string format, params object[] args)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void InfoFormat(String format, params Object[] args)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void InfoFormat (System.IFormatProvider provider, string format, params object[] args)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void InfoFormat (System.IFormatProvider provider, String format, params Object[] args)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void InfoFormat (string format, object arg0)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void InfoFormat (String format, Object arg0)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void InfoFormat (string format, object arg0, object arg1)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void InfoFormat (String format, Object arg0, Object arg1)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void InfoFormat (string format, object arg0, object arg1, object arg2)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void InfoFormat (String format, Object arg0, Object arg1, Object arg2)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void Warn (object message)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void Warn (Object message)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void Warn (object message, System.Exception exception)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void Warn (Object message, System.Exception exception)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void WarnFormat(string format, params object[] args)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void WarnFormat(String format, params Object[] args)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void WarnFormat (System.IFormatProvider provider, string format, params object[] args)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void WarnFormat (System.IFormatProvider provider, String format, params Object[] args)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void WarnFormat (string format, object arg0)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void WarnFormat (String format, Object arg0)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void WarnFormat (string format, object arg0, object arg1)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void WarnFormat (String format, Object arg0, Object arg1)
         {
             throw new System.NotImplementedException ();
         }
 
-        [System.Diagnostics.ConditionalAttribute("NEVER")]
-        public void WarnFormat (string format, object arg0, object arg1, object arg2)
+        [System.Diagnostics.ConditionalAttribute("DEBUG")]
+        public void WarnFormat (String format, Object arg0, Object arg1, Object arg2)
         {
             throw new System.NotImplementedException ();
         }
@@ -250,4 +254,5 @@ namespace PacketDotNet
             return new ILogInactive();
         }
     }
+#endif
 }

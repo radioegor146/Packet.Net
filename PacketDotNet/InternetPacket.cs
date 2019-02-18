@@ -19,7 +19,6 @@ along with PacketDotNet.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 using System;
-using PacketDotNet.Utils;
 
 namespace PacketDotNet
 {
@@ -27,12 +26,7 @@ namespace PacketDotNet
     /// Internet packets include IPv4, IPv6, IGMP etc, see
     /// http://en.wikipedia.org/wiki/Internet_Layer
     /// </summary>
+    [Serializable]
     public class InternetPacket : Packet
-    {
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public InternetPacket()
-        { }
-    }
+    { }
 }
